@@ -52,7 +52,7 @@
 <details>
 <summary>Alterando uma Spider [nomedaspider.py](http://nomedaspider.py) (”bookspider.py”)</summary>
 
--  Alterar o método parse que receberá a response igual ao ITerminal [Seção 1](#1.1)
+-  Alterar o método parse que receberá a response igual ao ITerminal [Seção 1.1](#1.1)
 </details>
 
 <details>
