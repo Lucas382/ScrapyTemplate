@@ -176,8 +176,9 @@ Rodando o projeto
 <details>
 <summary>Spider base criada a partir do comando “scrapy genspyder bookspider book.toscrape.com”</summary>
    
-    ```python
+   ```
     import scrapy
+    
     
     class BookspiderSpider(scrapy.Spider):
         name = "bookspider"
@@ -186,6 +187,6 @@ Rodando o projeto
     
         def parse(self, response):
             pass
-    ```
+   ```
 </details>
 </aside>
