@@ -72,8 +72,6 @@
 </aside>
 
 <aside>
-👣 *Passo a passo:*
-
 ---
 
 **Intermediário:**
@@ -135,7 +133,7 @@
 </details>
 
 <details>
-<summary>Rodando uma Spider na nuvem [8.](https://www.notion.so/Page-3-Scrapy-Project-4aa86e19a54c459c9b5d4465e564ea92?pvs=21)</summary>
+<summary>Rodando uma Spider na nuvem “[8.](https://www.notion.so/Page-3-Scrapy-Project-4aa86e19a54c459c9b5d4465e564ea92?pvs=21)”</summary>
 
 Criando um projeto Scrapy Cloud
 
