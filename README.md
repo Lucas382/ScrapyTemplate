@@ -52,7 +52,7 @@
 <details>
 <summary>Alterando uma Spider [nomedaspider.py](http://nomedaspider.py) (”bookspider.py”)</summary>
 
--  Alterar o método parse que receberá a response igual ao ITerminal <a href="#1.1">1.1</a>
+-  Alterar o método parse que receberá a response igual ao ITerminal [Seção 1](#1.1)
 </details>
 
 <details>
@@ -188,9 +188,9 @@ Rodando o projeto
    ```
 </details>
 
-## 1.1
+
 <details>
-<summary>1.1 Alterando o método parse para retornar um objeto com atributos vindos da response</summary>
+<summary>## 1.1 Alterando o método parse para retornar um objeto com atributos vindos da response</summary>
    
    ```python
     import scrapy
