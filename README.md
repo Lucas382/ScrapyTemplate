@@ -66,7 +66,7 @@
 <summary>Percorrendo próximas páginas</summary>
 
 -  Encontrar o elemento responsável pelo link da próxima página, nesse caso, “response.css('.next a::attr(href)').get()”
--  Adicionar lógica para percorrer próximas páginas usando callback “yield response.follow(next_page_url, callback=self.parse)” [1.2](https://www.notion.so/Page-3-Scrapy-Project-4aa86e19a54c459c9b5d4465e564ea92?pvs=21)
+-  Adicionar lógica para percorrer próximas páginas usando callback “yield response.follow(next_page_url, callback=self.parse)” [Link para a subseção 1.2](#subsecao-1-2)
 </details>
 </aside>
 
@@ -191,7 +191,7 @@ Rodando o projeto
 
 ## Seção 1
 <details>
-<summary>  Alterando o método parse para retornar um objeto com atributos vindos da response</summary>
+<summary>1.1 Alterando o método parse para retornar um objeto com atributos vindos da response</summary>
 
   ```python
     import scrapy
@@ -204,6 +204,41 @@ Rodando o projeto
     
         def parse(self, response):
             pass
+  ```
+  
+</details>
+
+<details id="subsecao-1-2">
+<summary>1.2 Adicionando coleta de páginas</summary>
+
+  ```python
+  import scrapy
+  
+  
+  class BookspiderSpider(scrapy.Spider):
+      name = "bookspider"
+      allowed_domains = ["books.toscrape.com"]
+      start_urls = ["https://books.toscrape.com"]
+  
+      def parse(self, response):
+          books = response.css('article.product_pod')
+  
+          for book in books:
+              yield{
+                  'name': book.css('h3 a::text').get(),
+                  'price': book.css('div p.price_color::text').get(),
+                  'url': book.css('h3 a').attrib['href']
+              }
+  
+  		#------------------------------------------------------------------------------------------------
+          next_page = response.css('.next a::attr(href)').get()
+  
+          if next_page is not None:
+              if 'catalogue/' in next_page:
+                  next_page_url = 'https://books.toscrape.com/' + next_page
+              else:
+                  next_page_url = 'https://books.toscrape.com/catalogue/' + next_page
+              yield response.follow(next_page_url, callback=self.parse)
   ```
   
 </details>
