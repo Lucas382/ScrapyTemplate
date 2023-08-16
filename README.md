@@ -70,3 +70,104 @@
 -  Adicionar lógica para percorrer próximas páginas usando callback “yield response.follow(next_page_url, callback=self.parse)” [1.2](https://www.notion.so/Page-3-Scrapy-Project-4aa86e19a54c459c9b5d4465e564ea92?pvs=21)
 </details>
 </aside>
+
+<aside>
+👣 *Passo a passo:*
+
+---
+
+**Intermediário:**
+
+<details>
+<summary>Adicionando Coleta de páginas dentro da página principal</summary>
+
+- Adicionar coleta de cada url de uma página do livro
+- Adicionar método para coletar informações de uma página usando callback “yield response.follow(book_url, callback=self.parse_book_page)” [2.](https://www.notion.so/Page-3-Scrapy-Project-4aa86e19a54c459c9b5d4465e564ea92?pvs=21)
+</details>
+
+<details>
+<summary>Exportar os dados manualmente para um arquivo</summary>
+
+- Terminal: “scrapy crawl bookspider -O bookdata.csv” para criar em formato csv
+- Terminal: “scrapy crawl bookspider -O bookdata.json” para criar em formato json
+- Terminal: “scrapy crawl bookspider -o bookdata.json” para adicionar em formato json
+</details>
+
+<details>
+<summary>Criando e populando um scrapy Item</summary>
+
+- Criar uma classe para o item no arquivo items.py [3.](https://www.notion.so/Page-3-Scrapy-Project-4aa86e19a54c459c9b5d4465e564ea92?pvs=21)
+- Popular a classe do livro [3.1](https://www.notion.so/Page-3-Scrapy-Project-4aa86e19a54c459c9b5d4465e564ea92?pvs=21)
+</details>
+
+<details>
+<summary>Rodando uma pipeline para pré-processar um item</summary>
+
+- Habilitar a spider no arquivo de configurações da spider “settings.py” descomentando o objeto ITEM_PIPELINES = {}
+  Nota: Em “ITEM_PIPELINES = {"bookscraper.pipelines.BookscraperPipeline": 300, }” o número 300 representa a prioridade, onde, quanto menor o valor mais “cedo” a pipeline vai rodar.
+- Alterar o método process_item do item no arquivo “pipelines.py” [4.](https://www.notion.so/Page-3-Scrapy-Project-4aa86e19a54c459c9b5d4465e564ea92?pvs=21)
+</details>
+
+<details>
+<summary>Salvando em um banco de dados</summary>
+
+- Podemos adicionar no arquivo de configurações da spider “settings.py” um objeto FEEDS = {'booksdata.json': {'format': 'json'}} para definir um formato padrão de saída quando rodarmos o comando “scrapy crawl bookspider” que é equivalente ao comando “scrapy crawl bookspider -O cleandata.json”
+- Podemos também sobrescrever uma configuração do arquivo settings.py dentro do arquivo bookspider.py (arquivo referente à spider), basta adicionar  “custom_settings = { 'FEEDS': { 'booksdata.json': {'format': 'json'}, 'overwrite': True }}” ao código
+- Baixar e instalar SQLITE.
+- Adicionar uma classe no arquivo pipelines.py para lidar com o banco [5.](https://www.notion.so/Page-3-Scrapy-Project-4aa86e19a54c459c9b5d4465e564ea92?pvs=21)
+- Adicionar um item no objeto ITEM_PIPELINES no arquivo settings.py com: "bookscraper.pipelines.SaveToSQLitePipeline": 400,"
+</details>
+
+<details>
+<summary>Evitando bloqueio de requisição de um site</summary>
+
+- Criar método para adicionar header ao request [6.](https://www.notion.so/Page-3-Scrapy-Project-4aa86e19a54c459c9b5d4465e564ea92?pvs=21)
+- Adicionar variáveis que o método necessitar [6.1](https://www.notion.so/Page-3-Scrapy-Project-4aa86e19a54c459c9b5d4465e564ea92?pvs=21)
+- Adicionar middleware ao arquivo settings.py [6.2](https://www.notion.so/Page-3-Scrapy-Project-4aa86e19a54c459c9b5d4465e564ea92?pvs=21)
+</details>
+
+<details>
+<summary>Adicionando proxy às requisições</summary>
+
+- Adicionar configuração de proxy ao arquivo settings.py [7.](https://www.notion.so/Page-3-Scrapy-Project-4aa86e19a54c459c9b5d4465e564ea92?pvs=21)
+- Alternativa usando um serviço pago [7.1](https://www.notion.so/Page-3-Scrapy-Project-4aa86e19a54c459c9b5d4465e564ea92?pvs=21)
+- Alternativa usando scrapeops proxy api [7.2](https://www.notion.so/Page-3-Scrapy-Project-4aa86e19a54c459c9b5d4465e564ea92?pvs=21)
+</details>
+
+<details>
+<summary>Rodando uma Spider na nuvem [8.](https://www.notion.so/Page-3-Scrapy-Project-4aa86e19a54c459c9b5d4465e564ea92?pvs=21)</summary>
+
+Criando um projeto Scrapy Cloud
+
+---
+
+- Criar uma conta em “[https://app.zyte.com](https://app.zyte.com/o/599648)”
+- Ir até a aba Scrapy Cloud
+- Criar um novo projeto clicando em “Start Project”
+- Em Scrapy Cloud, navegar no projeto criado
+- Ir na sessão “SPIDERS/Code & Deploys”
+- Clicar no botão “Deploy My code”
+
+Dando deploy do seu projeto
+
+---
+
+- No terminal do seu projeto instalar o “shub” com o comando “pip install shub”
+- Terminal: “shub login"
+- Fornecer a chave de API após “API key: SUA-CHAVE-API”
+- Executar Deploy com o comando “shub deploy PROJECT-ID”
+- Aguardar execução do deploy e verificar no Dashboard
+
+Rodando o projeto
+
+---
+
+- No menu de navegação do site do Scrapy Cloud, ir em “JOBS/Dashboard”
+- Clicar em “Run”
+- Selecionar a Spider que deseja rodar
+- Clicar em “Run”
+
+*Nota: Caso não seja importado automaticamente, adicionar ao arquivo “scrapinghub.yml” a linha de código “requirements_file: requirements.txt” para que seja mapeado o arquivo de requirements.txt do projeto.* [Ver tutorial](https://www.notion.so/Page-3-Scrapy-Project-4aa86e19a54c459c9b5d4465e564ea92?pvs=21)
+</details>
+</aside>
+
