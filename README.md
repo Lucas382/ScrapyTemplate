@@ -192,10 +192,11 @@ Rodando o projeto
 ## Seção 1
 <details>
 <summary>  Alterando o método parse para retornar um objeto com atributos vindos da response</summary>
-    ```python
-  
+
+  ```python
     import scrapy
-  
+    
+    
     class BookspiderSpider(scrapy.Spider):
         name = "bookspider"
         allowed_domains = ["books.toscrape.com"]
@@ -203,7 +204,7 @@ Rodando o projeto
     
         def parse(self, response):
             pass
-            
-   ```
+  ```
+  
 </details>
 <aside>
