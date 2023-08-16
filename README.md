@@ -8,8 +8,8 @@
 <details>
 <summary>Instalação Scrapy</summary>
 
-- [ ] Criar um novo projeto com ambiente virtual
-- [ ] Abrir terminal e instalar o Scrapy com o comando “pip install Scrapy”
+  - [ ] Criar um novo projeto com ambiente virtual
+  - [ ] Abrir terminal e instalar o Scrapy com o comando “pip install Scrapy”
 </details>
 
 <details>
