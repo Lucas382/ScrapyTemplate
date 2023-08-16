@@ -188,8 +188,11 @@ Rodando o projeto
    ```
 </details>
 
+<aside>
+Mais detalhes:
+
 <details>
-<summary>Spider base criada a partir do comando “scrapy genspyder bookspider book.toscrape.com”</summary>
+<summary>1.1 Alterando o método parse para retornar um objeto com atributos vindos da response</summary>
 python
 Copy code
  import scrapy
