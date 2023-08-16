@@ -1,6 +1,11 @@
 <aside>
 👣 *Passo a passo:*
 
+<details>
+<summary>Clique para mostrar/ocultar o conteúdo</summary>
+Conteúdo que você deseja mostrar ou ocultar.
+</details>
+
 ---
 
 **Instalação e primeiro contato:**
