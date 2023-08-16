@@ -176,7 +176,7 @@ Rodando o projeto
 <details>
 <summary>Spider base criada a partir do comando “scrapy genspyder bookspider book.toscrape.com”</summary>
    
-   ```
+   ```python
     import scrapy
     
     
