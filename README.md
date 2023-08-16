@@ -79,7 +79,7 @@
 <summary>Adicionando Coleta de páginas dentro da página principal</summary>
 
 - Adicionar coleta de cada url de uma página do livro
-- Adicionar método para coletar informações de uma página usando callback “yield response.follow(book_url, callback=self.parse_book_page)” [2.](https://www.notion.so/Page-3-Scrapy-Project-4aa86e19a54c459c9b5d4465e564ea92?pvs=21)
+- Adicionar método para coletar informações de uma página usando callback “yield response.follow(book_url, callback=self.parse_book_page)” [2](#subsecao-2)
 </details>
 
 <details>
@@ -238,6 +238,66 @@ Rodando o projeto
               else:
                   next_page_url = 'https://books.toscrape.com/catalogue/' + next_page
               yield response.follow(next_page_url, callback=self.parse)
+  ```
+  
+</details>
+
+<details id="subsecao-2">
+<summary>2.Adicionando raspagem de cada página do livro</summary>
+
+  ```python
+    import scrapy
+    
+    
+    class BookspiderSpider(scrapy.Spider):
+        name = "bookspider"
+        allowed_domains = ["books.toscrape.com"]
+        start_urls = ["https://books.toscrape.com"]
+    
+        def parse(self, response):
+            books = response.css('article.product_pod')
+    
+    #---------------------------------------Alterado-------------------------------------------------
+            for book in books:
+                book_relative_url = book.css('h3 a::attr(href)').get()
+                if 'catalogue/' in book_relative_url:
+                    book_url = 'https://books.toscrape.com/' + book_relative_url
+                else:
+                    book_url = 'https://books.toscrape.com/catalogue/' + book_relative_url
+                yield response.follow(book_url, callback=self.parse_book_page)
+    #------------------------------------------------------------------------------------------------
+    
+            next_page = response.css('.next a::attr(href)').get()
+            if next_page is not None:
+                if 'catalogue/' in next_page:
+                    next_page_url = 'https://books.toscrape.com/' + next_page
+                else:
+                    next_page_url = 'https://books.toscrape.com/catalogue/' + next_page
+                yield response.follow(next_page_url, callback=self.parse)
+    
+    #----------------------------------------Adicionado----------------------------------------------
+        def parse_book_page(self, response):
+            table_rows = response.css("table tr")
+            yield {
+                'url': response.url,
+                'title': response.css('.product_main h1::text').get(),
+                'product_type': table_rows[1].css('td ::text').get(),
+                'price_excl_tax': table_rows[2].css('td ::text').get(),
+                'price_excl_tax': table_rows[2].css('td ::text').get(),
+                'tax': table_rows[4].css('td ::text').get(),
+                'availability': table_rows[5].css('td ::text').get(),
+                'num_reviews': table_rows[6].css('td ::text').get(),
+                'stars' : response.css('p.star-rating::attr(class)').get(),
+                'category': response.xpath("//ul[@class='breadcrumb']/li[@class='active']/preceding-sibling::li[1]/a/text()").get(),
+                'description': response.xpath("//div[@id='product_description']/following-sibling::p/text()").get(),
+                'price': response.css('p.price_color::text').get()
+            }
+    
+    """
+    	Nota: Em category e description foi usado Xpath
+    	no caso de category foi pego o elemento irmão (de mesmo nivel) anterior ao elemento li de classe 'active'
+    	no caso da description foi pego o elemento irmão (de mesmo nivel) posterior ao elemento div de cladesse 'product_description'
+    """
   ```
   
 </details>
