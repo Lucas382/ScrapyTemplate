@@ -188,9 +188,9 @@ Rodando o projeto
    ```
 </details>
 
-## Seção 1.1
+#secao-1.1
 <details>
-   <summary>1.1 Alterando o método parse para retornar um objeto com atributos vindos da response</summary>
+   <summary>  Alterando o método parse para retornar um objeto com atributos vindos da response</summary>
    ```python
     import scrapy
 
