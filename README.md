@@ -52,7 +52,7 @@
 <details>
 <summary>Alterando uma Spider [nomedaspider.py](http://nomedaspider.py) (”bookspider.py”)</summary>
 
--  Alterar o método parse que receberá a response igual ao ITerminal [Seção 1](#Seção-1)
+-  Alterar o método parse que receberá a response igual ao ITerminal [1.1](#subsecao-1-1)
 </details>
 
 <details>
@@ -66,7 +66,7 @@
 <summary>Percorrendo próximas páginas</summary>
 
 -  Encontrar o elemento responsável pelo link da próxima página, nesse caso, “response.css('.next a::attr(href)').get()”
--  Adicionar lógica para percorrer próximas páginas usando callback “yield response.follow(next_page_url, callback=self.parse)” [Link para a subseção 1.2](#subsecao-1-2)
+-  Adicionar lógica para percorrer próximas páginas usando callback “yield response.follow(next_page_url, callback=self.parse)” [1.2](#subsecao-1-2)
 </details>
 </aside>
 
@@ -189,8 +189,7 @@ Rodando o projeto
    ```
 </details>
 
-## Seção 1
-<details>
+<details id="subsecao-1-1">
 <summary>1.1 Alterando o método parse para retornar um objeto com atributos vindos da response</summary>
 
   ```python
