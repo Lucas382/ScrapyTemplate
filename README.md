@@ -71,8 +71,8 @@
 </aside>
 
 <aside>
+  
 ---
-
 **Intermediário:**
 
 <details>
@@ -137,7 +137,6 @@
 Criando um projeto Scrapy Cloud
 
 ---
-
 - Criar uma conta em “[https://app.zyte.com](https://app.zyte.com/o/599648)”
 - Ir até a aba Scrapy Cloud
 - Criar um novo projeto clicando em “Start Project”
@@ -148,7 +147,6 @@ Criando um projeto Scrapy Cloud
 Dando deploy do seu projeto
 
 ---
-
 - No terminal do seu projeto instalar o “shub” com o comando “pip install shub”
 - Terminal: “shub login"
 - Fornecer a chave de API após “API key: SUA-CHAVE-API”
