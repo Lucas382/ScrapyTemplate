@@ -821,6 +821,132 @@ Resultado:
 <details id="subsecao-8">
 <summary>8 Rodando projeto na nuvem usando Scrapy Cloud</summary>
 
+>Criar uma conta em “https://app.zyte.com/account/login/?next=/o/599648/scrapycloud/discover”
+
+![1](https://github.com/Lucas382/ScrapyTemplate/assets/44009909/f14d3352-e74f-44ec-8a8b-2214677a287b)
+
+>no menu lateral navegar até scrapy Cloud
+
+![2](https://github.com/Lucas382/ScrapyTemplate/assets/44009909/9478d467-0763-4379-a149-27742b2f1762)
+
+>Clicar em start project
+
+![3](https://github.com/Lucas382/ScrapyTemplate/assets/44009909/d34eaf9a-71b9-4f7c-8dcb-0b9283ccfe11)
+
+>Dar um nome ao projeto
+
+![6](https://github.com/Lucas382/ScrapyTemplate/assets/44009909/c382ebc5-e95b-4fda-8f77-b7146a582a1a)
+
+>Navegar a pagina de Code & Deploy 1.0
+
+![7](https://github.com/Lucas382/ScrapyTemplate/assets/44009909/0f8e21b3-3d58-48de-9c40-4d57b185a9cd)
+
+>Navegar a pagina de Code & Deploy 1.1
+
+![8](https://github.com/Lucas382/ScrapyTemplate/assets/44009909/fb7c767f-9f90-4c3d-91aa-32db42826555)
+
+>Instalar shub no projeto (O projeto atual foi criado no Pycharm  então foi usado o próprio console do Pycharm)
+
+![9](https://github.com/Lucas382/ScrapyTemplate/assets/44009909/25680d88-d3b6-4605-89b1-5cd735aee312)
+
+>Logar no shub 1.0: digitar comando de login
+
+![10](https://github.com/Lucas382/ScrapyTemplate/assets/44009909/c84f7e7c-e005-430d-b8e6-43beed645f2e)
+
+>Logar no shub 1.1: Inserir chave API 
+
+![11](https://github.com/Lucas382/ScrapyTemplate/assets/44009909/ba94fcc6-bcc0-4228-824d-de03c03f51e4)
+
+![11 1](https://github.com/Lucas382/ScrapyTemplate/assets/44009909/5b144044-988d-488f-8ce7-d7d2bca436de)
+>Executar Deploy do projeto para o shub
+
+![12](https://github.com/Lucas382/ScrapyTemplate/assets/44009909/34e4c303-5417-45ef-9d11-033bfeb55b56)
+
+>Aguardar o Deplyoy
+
+![13](https://github.com/Lucas382/ScrapyTemplate/assets/44009909/5dc44f12-d4c8-4267-a09f-0977d543cb41)
+
+>Sucesso!
+
+![14](https://github.com/Lucas382/ScrapyTemplate/assets/44009909/cbd4e79b-aaaf-4d1b-8aac-b0fac2ddbf16)
+
+>Inserir o nome da Spider e Clicar em Run
+
+![15](https://github.com/Lucas382/ScrapyTemplate/assets/44009909/098243d2-58c8-4323-86ca-f819ff853570)
+
+>Navegar até o Dashboard do projeto e clicar em Run
+
+![16](https://github.com/Lucas382/ScrapyTemplate/assets/44009909/16a897ba-3124-4e45-a9db-d046f3f7ee99)
+
+>Virificar conclusão na seção “Completed”
+
+![17](https://github.com/Lucas382/ScrapyTemplate/assets/44009909/5eb27a5c-c670-4daa-8396-48a228990970)
+
+>Acompanhar execução na seção “Running”
+
+![18](https://github.com/Lucas382/ScrapyTemplate/assets/44009909/0433c7a6-77cb-4240-9b99-4e938e36344c)
+
+>No caso atual ocorreram 4 erros, para investigar melhor clicaremos no numero logo abaixo da coluna “Errors”na tabela da seção “Completed”.
+
+![19](https://github.com/Lucas382/ScrapyTemplate/assets/44009909/bdda0a79-8ee7-4395-a936-ebab225b7fed)
+
+>Podemos investigar os erros na seguinte página, podendo expandir cada erro para ver o log do erro em específico. 
+
+![20](https://github.com/Lucas382/ScrapyTemplate/assets/44009909/27b63610-61b0-479f-813d-34a5b4fd25ca)
+
+>O erro é decorrido da falta do módulo “itemadapter” que utilizamos em uma classe dentro do arquivo pupelines.py para indicar um livro como um item
+
+![21](https://github.com/Lucas382/ScrapyTemplate/assets/44009909/86bd34fb-16b4-4db0-9bcd-7379381b4e35)
+
+>O erro em questão está ocorrendo pois no deploy do projeto não estamos indicando os requisitos que o projeto está utilizando. 
+para isso criaremos um arquivo requirements.txt na raiz do nosso projeto e adicionaremos a versão do itemadapter que estamos utilizando
+
+![22](https://github.com/Lucas382/ScrapyTemplate/assets/44009909/483d0c3a-37dd-46c2-a473-2dc2910eeb95)
+
+>Em seguida no arquivo scrapinghub.yml adicionaremos a linha de código “requirements_file: requirements.txt” logo a baixo do id 
+do projeto para indicar o caminho do nosso arquivo requirements.
+
+![23](https://github.com/Lucas382/ScrapyTemplate/assets/44009909/24e31841-4d24-40f3-9c15-3bcad6007d66)
+
+>Executaremos novamente o Deploy do projeto
+
+![24](https://github.com/Lucas382/ScrapyTemplate/assets/44009909/07665c05-e8c2-4590-a629-582404c3c0e5)
+
+>No site de gerenciamento de deploy iremos navegar até a seção de deploy para verificar o andamento do nosso deploy
+
+![25](https://github.com/Lucas382/ScrapyTemplate/assets/44009909/1b72b23c-7a50-452d-bb9e-cc4593dd2180)
+
+>Aguardaremos o progesso do deploy. Note que temos um numero 2 que indica que esse é o segundo deploy desse projeto.
+
+![26](https://github.com/Lucas382/ScrapyTemplate/assets/44009909/b0070adf-edfc-4adb-a19e-f72bd6276be5)
+
+>Indicação de sucesso do deploy.
+
+![27](https://github.com/Lucas382/ScrapyTemplate/assets/44009909/cc63eeeb-722e-4211-a373-dcde04cb6197)
+
+>Podemos clicar na seção que acabamos de  implantar(Deploy) e navegar até a aba “Requirements” para 
+verificar que nosso requirements.txt foi implementado com sucesso! 
+
+![28](https://github.com/Lucas382/ScrapyTemplate/assets/44009909/1ed4dd57-b921-4e67-95aa-63293c520394)
+
+>Seguiremos os passos de execução da spider e se tudo correr bem teremos uma execução em andamento da
+nossa spyder. caso contrario investigue os erros para resolver o problema.
+
+![29](https://github.com/Lucas382/ScrapyTemplate/assets/44009909/a3464210-1c88-4e56-b367-22e4a941e4f7)
+
+>Agora no Dashboard podemos ver que a spyder rodou com sucesso e tambem podemos ver a que falhou.
+
+![30](https://github.com/Lucas382/ScrapyTemplate/assets/44009909/55232194-f55c-4ae6-b8e1-e9e0b3a67739)
+
+>Clicando no numero do item podemos verificar os itens coletados.
+
+![31](https://github.com/Lucas382/ScrapyTemplate/assets/44009909/3d15d95c-5dcc-491f-a8e4-75fc2fcd6a7d)
+
+>Nessa parte também é possível baixar todos os itens em um formato desejado dentre os disponiveis.
+
+![32](https://github.com/Lucas382/ScrapyTemplate/assets/44009909/7f2d948a-2dea-4f75-801d-2071c0388231)
+
+
 <p align="right">(<a href="#readme-top">Voltar ao topo</a>)</p> 
 </details>
 <aside>
