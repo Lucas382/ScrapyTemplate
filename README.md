@@ -1,6 +1,13 @@
 <a name="readme-top"></a>
+
+#### Descrição:
+>Esse projeto tem como intuito facilitar o entendimento dos processos de utilização <br>
+do framework ***Scrapy*** em conjunto com um deploy feito na nuvem usando **Scrapy Cloud**. <br>
+
+
 <aside>
-👣 *Passo a passo:*
+
+👣 ***Passo a passo:***
 
 ---
 **Instalação e primeiro contato:**
