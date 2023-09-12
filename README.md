@@ -170,7 +170,9 @@ Rodando o projeto
 
 
 <aside>
-  
+
+---
+
 ---
 **Mais detalhes:**
 <details id="subsecao-1">
