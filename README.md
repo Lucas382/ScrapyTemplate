@@ -4,6 +4,8 @@
 >Esse projeto tem como intuito facilitar o entendimento dos processos de utilização <br>
 do framework ***Scrapy*** em conjunto com um deploy feito na nuvem usando **Scrapy Cloud**. <br>
 
+<p align="right">Creditos: <a href="https://www.youtube.com/watch?v=mBoX_JCKZTE">video</a> FreeCodeCamp</p>                                                      
+
 
 <aside>
 
@@ -58,7 +60,7 @@ do framework ***Scrapy*** em conjunto com um deploy feito na nuvem usando **Scra
 </details>
 
 <details>
-<summary>Alterando uma Spider [nomedaspider.py](http://nomedaspider.py) (”bookspider.py”)</summary>
+<summary>Alterando uma Spider nomedaspider.py (”bookspider.py”)</summary>
 
 -  Alterar o método parse que receberá a response igual ao ITerminal [1.1](#subsecao-1-1)
 </details>
